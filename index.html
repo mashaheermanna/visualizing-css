@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+    <script>
+      function changeBackgroundColor(asdf, color) {
+        asdf.style.backgroundColor = color;
+      }
+
+      function TextTransform(asdf, pro) {
+        var property = document.getElementById(pro).value;
+        log_console(property);
+        asdf.style.textTransform = property;
+      }
+
+      function log_console(value) {
+        console.log(value);
+      }
+
+      function boxvisualization(id, value) {
+        console.log(value, id);
+        // const element = document.querySelector(".boxmodel-output1");
+        const ele = document.querySelector(".boxmodel-output1");
+        console.log(ele);
+       
+        if (id === "handw") {
+          ele.style.height = value + "%";
+          ele.style.width = value + "%";
+        } else if (id === "padding") {
+          ele.style.padding = value + "px";
+          ele.style.boxShadow =
+            "inset" +
+            " " +
+            0 +
+            " " +
+            0 +
+            " " +
+            0 +
+            " " +
+            value +
+            "px" +
+            " " +
+            "lightGreen";
+        } else if (id === "border") {
+          ele.style.border = value + "px" + " " + "solid" + " " + "red";
+          // element.style.Top = "-" + value + "px";
+          // element.style.Bottom = "-" + value + "px";
+          // element.style.Left = "-" + value + "px";
+          // element.style.Right = "-" + value + "px";
+        } else if (id === "margin") {
+          ele.style.margin = value + "px";
+
+          // element.style.top = "-" + value + "px";
+          // element.style.bottom = "-" + value + "px";
+          // element.style.left = "-" + value + "px";
+          // element.style.right = "-" + value + "px";
+        } else {
+          log_console(id, value, element);
+        }
+      }
+      
+    </script>
+  </head>
+
+  <body>
+    <header class="main-header">
+      <h1>Visualizing CSS Properties</h1>
+    </header>
+
+    <section class="color">
+      <div class="input">
+        <h3 class="sub-heading">Try different color >></h3>
+
+        <h3 class="sub-heading">Use HTML5:</h3>
+        <p class="info">click below</p>
+        <input
+          type="color"
+          class="html5colorpicker"
+          onchange="changeBackgroundColor(myDiv1,value)"
+          value="#dda15e"
+        />
+        <p class="info">
+          onces the color is selected click anywhere else to see the color
+          change
+        </p>
+        <br />
+      </div>
+
+      <div id="myDiv1" class="color-output"></div>
+    </section>
+
+    <section class="texttransform">
+      <div class="input">
+        <h3 class="sub-heading">Try text-transform Properties >></h3>
+
+        <div class="radio-div ">
+          <button
+            class="button1"
+            type="radio"
+            id="none"
+            name="transformproperty"
+            onclick="TextTransform(myDiv2, id)"
+            value="none"
+            checked
+          >
+            <label for="id">
+              <code>text-transform: none;</code>
+            </label>
+          </button>
+        </div>
+        <br />
+        <br />
+        <div class="radio-div ">
+          <button
+            class="button1"
+            type="radio"
+            id="capitalize"
+            name="transformproperty"
+            onclick="TextTransform(myDiv2, id)"
+            value="capitalize"
+          >
+            <code>text-transform: capitalize;</code>
+          </button>
+        </div>
+        <br />
+        <br />
+        <div class="radio-div">
+          <button
+            class=" button1"
+            type="radio"
+            id="uppercase"
+            name="transformproperty"
+            onclick="TextTransform(myDiv2, id)"
+            value="uppercase"
+          >
+            <code>text-transform: uppercase;</code>
+          </button>
+        </div>
+        <br />
+        <br />
+        <div class="radio-div ">
+          <button
+            class="button1"
+            type="radio"
+            id="lowercase"
+            name="transformproperty"
+            onclick="TextTransform(myDiv2,id);"
+            value="lowercase"
+          >
+            <code>text-transform: lowercase;</code>
+          </button>
+        </div>
+      </div>
+
+      <div id="myDiv2" class="transformproperty-output">
+        this section is to show the working of text-transform property
+        <p id="myDiv3">this is inside of the <\p> tag</p>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="boxmodel">
+      <h3 class="sub-heading">lets manipulate the values of boxmodel</h3>
+      <div class="input1">
+        <div class="heightandwidth button">
+          height and width
+          <br />
+          <input
+            type="range"
+            class="rangebar1"
+            id="handw"
+            min="10"
+            max="90"
+            value="20"
+            onchange="boxvisualization(id, value)"
+          />
+        </div>
+        <div class="padding button">
+          paddding<br />
+          <input
+            type="range"
+            class="rangebar1"
+            id="padding"
+            min="10"
+            max="80"
+            value="20"
+            onchange="boxvisualization(id, value)"
+          />
+        </div>
+        <div class="border button">
+          border<br />
+          <input
+            type="range"
+            class="rangebar1"
+            id="border"
+            min="2"
+            max="40"
+            value="5"
+            onchange="boxvisualization(id, value)"
+          />
+        </div>
+        <div class="margin button">
+          margin<br />
+          <input
+            type="range"
+            class="rangebar1"
+            id="margin"
+            min="10"
+            max="60"
+            value="10"
+            onchange="boxvisualization(id, value)"
+          />
+          <div class="info1 ">
+            note that the marings are invisible and they work by provideing
+            space between elelemts
+          </div>
+        </div>
+      </div>
+      <div class="boxmodel-output">
+        <!-- <div class="boxmodel-outpu"> -->
+        <div id="myDiv3" class="boxmodel-output1"></div>
+        <!-- </div> -->
+      </div>
+    </section>
+  </body>
+</html>
